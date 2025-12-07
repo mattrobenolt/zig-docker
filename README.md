@@ -6,15 +6,15 @@ Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
 
 ## Images
 
-- **Debian** (glibc): `ghcr.io/mattrobenolt/zig:0.15.1` or `ghcr.io/mattrobenolt/zig:0.15.1-debian`
-- **Alpine** (musl): `ghcr.io/mattrobenolt/zig:0.15.1-alpine`
+- **Debian** (glibc): `ghcr.io/mattrobenolt/zig:0.15.2` or `ghcr.io/mattrobenolt/zig:0.15.2-debian`
+- **Alpine** (musl): `ghcr.io/mattrobenolt/zig:0.15.2-alpine`
 
 Both support `linux/amd64` and `linux/arm64`.
 
 ## Usage
 
 ```dockerfile
-FROM ghcr.io/mattrobenolt/zig:0.15.1 AS builder
+FROM ghcr.io/mattrobenolt/zig:0.15.2 AS builder
 WORKDIR /app
 COPY . .
 RUN zig build -Doptimize=ReleaseFast
