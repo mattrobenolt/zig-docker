@@ -6,15 +6,17 @@ Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
 
 ## Images
 
-- **Chainguard**: `ghcr.io/mattrobenolt/zig:0.15.2` or `ghcr.io/mattrobenolt/zig:0.15.2-chainguard`
-- **Alpine**: `ghcr.io/mattrobenolt/zig:0.15.2-alpine`
+- **Chainguard**: `ghcr.io/mattrobenolt/zig:0.16.0` or `ghcr.io/mattrobenolt/zig:0.16.0-chainguard`
+- **Alpine**: `ghcr.io/mattrobenolt/zig:0.16.0-alpine`
+
+Version `0.15.2` is also published with the same tag suffixes.
 
 Both support `linux/amd64` and `linux/arm64`.
 
 ## Usage
 
 ```dockerfile
-FROM ghcr.io/mattrobenolt/zig:0.15.2 AS builder
+FROM ghcr.io/mattrobenolt/zig:0.16.0 AS builder
 WORKDIR /app
 COPY . .
 RUN zig build -Doptimize=ReleaseFast
