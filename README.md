@@ -6,8 +6,8 @@ Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
 
 ## Images
 
-- **Debian** (glibc): `ghcr.io/mattrobenolt/zig:0.15.2` or `ghcr.io/mattrobenolt/zig:0.15.2-debian`
-- **Alpine** (musl): `ghcr.io/mattrobenolt/zig:0.15.2-alpine`
+- **Chainguard**: `ghcr.io/mattrobenolt/zig:0.15.2` or `ghcr.io/mattrobenolt/zig:0.15.2-chainguard`
+- **Alpine**: `ghcr.io/mattrobenolt/zig:0.15.2-alpine`
 
 Both support `linux/amd64` and `linux/arm64`.
 
