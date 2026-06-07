@@ -1,0 +1,51 @@
+name: Update GitHub Actions
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  update:
+    name: Update pinned actions
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          persist-credentials: false
+
+      - name: Update action pins
+        uses: suzuki-shunsuke/pinact-action@896d595f299e71d65b9d28349d6956abe144390a # v3.0.0
+        with:
+          skip_push: "true"
+          update: "true"
+          verify: "true"
+
+      - name: Audit workflows
+        uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d # v0.5.6
+        with:
+          inputs: .github/workflows
+          advanced-security: "false"
+          annotations: "true"
+          min-severity: low
+
+      - name: Push updates
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_UPDATE_TOKEN }}
+        run: |
+          if git diff --quiet; then
+            echo "No action pins to update."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows
+          git commit -m "Update GitHub Actions pins"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
