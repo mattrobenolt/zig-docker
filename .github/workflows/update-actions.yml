@@ -12,7 +12,7 @@ jobs:
     name: Update pinned actions
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -37,7 +37,7 @@ jobs:
 
       - name: Push updates
         env:
-          GH_TOKEN: ${{ secrets.ACTIONS_UPDATE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if git diff --quiet; then
             echo "No action pins to update."
