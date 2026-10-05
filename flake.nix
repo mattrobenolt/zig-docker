@@ -21,6 +21,7 @@
         {
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
+              actionlint
               docker
               pinact
               zizmor
