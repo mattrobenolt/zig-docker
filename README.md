@@ -9,7 +9,7 @@ Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
 - **Chainguard**: `ghcr.io/mattrobenolt/zig:0.17.0` or `ghcr.io/mattrobenolt/zig:0.17.0-chainguard`
 - **Alpine**: `ghcr.io/mattrobenolt/zig:0.17.0-alpine`
 
-Versions `0.14.1`, `0.15.2`, and `0.16.0` are also published with the same tag suffixes.
+Versions `0.15.2` and `0.16.0` are also published with the same tag suffixes.
 
 Both support `linux/amd64` and `linux/arm64`.
 
