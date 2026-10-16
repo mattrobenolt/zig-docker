@@ -1,35 +1,13 @@
-# Zig Docker Images
+# Moved to baskingspot/zig-docker
 
-Unofficial Docker images for the [Zig programming language](https://ziglang.org/) compiler.
+This repository is archived. The images build and publish from [baskingspot/zig-docker](https://github.com/baskingspot/zig-docker) as `ghcr.io/baskingspot/zig`.
 
-Published to GitHub Container Registry at `ghcr.io/mattrobenolt/zig`.
+The tags already published at `ghcr.io/mattrobenolt/zig` stay frozen at the last build from `main`, commit `9cb896b`. They get no new Zig releases.
 
-## Images
+## Migrate
 
-- **Chainguard**: `ghcr.io/mattrobenolt/zig:0.17.0` or `ghcr.io/mattrobenolt/zig:0.17.0-chainguard`
-- **Alpine**: `ghcr.io/mattrobenolt/zig:0.17.0-alpine`
-
-Versions `0.15.2` and `0.16.0` are also published with the same tag suffixes.
-
-Both support `linux/amd64` and `linux/arm64`.
-
-## Usage
+Replace `ghcr.io/mattrobenolt/zig` with `ghcr.io/baskingspot/zig` in your `FROM` lines. The tag scheme is unchanged: `:<version>`, `:<version>-chainguard`, and `:<version>-alpine`. The new images cover Zig 0.15.2, 0.16.0, and 0.17.0 on `linux/amd64` and `linux/arm64`.
 
 ```dockerfile
-FROM ghcr.io/mattrobenolt/zig:0.17.0 AS builder
-WORKDIR /app
-COPY . .
-RUN zig build -Doptimize=ReleaseFast
-
-FROM debian:bookworm-slim
-COPY --from=builder /app/zig-out/bin/myapp /usr/local/bin/myapp
-ENTRYPOINT ["myapp"]
+FROM ghcr.io/baskingspot/zig:0.17.0 AS builder
 ```
-
-## Security
-
-Images are built following [Zig's documented best practices](https://ziglang.org/download/community-mirrors/). All downloads are cryptographically verified using minisign against the Zig Software Foundation's public key.
-
-## License
-
-MIT License. See [LICENSE](LICENSE).
